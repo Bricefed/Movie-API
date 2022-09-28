@@ -1,0 +1,16 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 1.9rem;
+
+  nav ul {
+    display: flex;
+    gap: 15px;
+  }
+
+  .logo {
+    font-size: 3rem;
+  }
+}

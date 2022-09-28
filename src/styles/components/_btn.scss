@@ -1,0 +1,13 @@
+.btn-primary {
+  background: $btn-bg-light;
+  padding: 10px 15px;
+  border-radius: 10px;
+
+  &.active, &.active:hover {
+    background: $btn-bg;
+  }
+
+  &:hover {
+    background: $btn-bg-hover;
+  }
+}

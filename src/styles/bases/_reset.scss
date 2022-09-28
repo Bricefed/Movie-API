@@ -1,0 +1,62 @@
+*,
+*::before,
+*::after,
+body,
+body::before,
+body::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.app {
+  max-width: 1200px;
+  padding-inline: 50px;
+  margin-inline: auto;
+}
+
+html {
+  font-size: 62.5%; // 1rem = 10px
+}
+
+body {
+  background: $body-bg;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+textarea {
+  resize: none;
+}
+
+textarea,
+input,
+button {
+  font-family: inherit;
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+button {
+  background: inherit;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+p {
+  font-size: 1.6rem;
+}
