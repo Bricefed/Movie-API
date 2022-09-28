@@ -1,28 +1,104 @@
 import React from "react";
 
-const Card = () => {
+const Card = ({ movie }) => {
+  const formatDate = (date) => {
+    let [y, m, d] = date.split("-");
+    return [d, m, y].join("/");
+  };
+
+  const genreFinder = () => {
+    let genreArray = [];
+    for (let i = 0; i < movie.genre_ids.length; i++) {
+      switch (movie.genre_ids[i]) {
+        case 28:
+          genreArray.push(`Action`);
+          break;
+        case 12:
+          genreArray.push(`Aventure`);
+          break;
+        case 16:
+          genreArray.push(`Animation`);
+          break;
+        case 35:
+          genreArray.push(`Comédie`);
+          break;
+        case 80:
+          genreArray.push(`Policier`);
+          break;
+        case 99:
+          genreArray.push(`Documentaire`);
+          break;
+        case 18:
+          genreArray.push(`Drame`);
+          break;
+        case 10751:
+          genreArray.push(`Famille`);
+          break;
+        case 14:
+          genreArray.push(`Fantasy`);
+          break;
+        case 36:
+          genreArray.push(`Histoire`);
+          break;
+        case 27:
+          genreArray.push(`Horreur`);
+          break;
+        case 10402:
+          genreArray.push(`Musique`);
+          break;
+        case 9648:
+          genreArray.push(`Mystère`);
+          break;
+        case 10749:
+          genreArray.push(`Romance`);
+          break;
+        case 878:
+          genreArray.push(`Science-fiction`);
+          break;
+        case 10770:
+          genreArray.push(`Téléfilm`);
+          break;
+        case 53:
+          genreArray.push(`Thriller`);
+          break;
+        case 10752:
+          genreArray.push(`Guerre`);
+          break;
+        case 37:
+          genreArray.push(`Western`);
+          break;
+        default:
+          break;
+      }
+    }
+    return genreArray.map((genre) => <li key={genre}>{genre}</li>);
+  };
+
   return (
     <div className="card-container">
-      <img src={"https://picsum.photos/200/250"} alt="t" />
+      <img
+        src={
+          movie.poster_path
+            ? `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+            : "https://picsum.photos/200/300"
+        }
+        alt={movie.title}
+      />
       <div className="text-container">
-        <h2>Title</h2>
+        <h2>{movie.title}</h2>
         <p className="date">
-          Sortie le : <span>21/11/2012</span>
+          Sortie le :{" "}
+          {movie.release_date ? (
+            <span>{formatDate(movie.release_date)}</span>
+          ) : (
+            "Inconue..."
+          )}
         </p>
-        <p className="rate">8/10 ⭐</p>
-        <ul className="category-container">
-          <li>Action</li>
-          <li>Humour</li>
-          <li>Fiction</li>
-        </ul>
+        <p className="rate">{movie.vote_average}/10 ⭐</p>
+        <ul className="category-container">{genreFinder()}</ul>
         <h2>Synopsis</h2>
         <p className="description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-          dolorem facere assumenda necessitatibus voluptate quidem a, nam alias.
-          Iste accusamus quod reiciendis minus quis nostrum, voluptatum nesciunt
-          perferendis non dolores dolorem temporibus. Corporis perferendis autem
-          corrupti magni! Laudantium suscipit, cumque alias, aliquid iusto ipsam
-          amet minus atque libero iste consequatur?
+          {movie.overview ? movie.overview : "⛔ Aucune description..."}
         </p>
       </div>
       <button>Ajouter au coups de coeur</button>
